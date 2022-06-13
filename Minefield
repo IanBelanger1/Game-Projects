@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en";>
+<head>
+  <style>
+  #board {
+  border: 4px solid darkgreen;
+  border-radius: 20px;
+  background: lightblue;
+  background-size: cover;
+  height: 500px;
+  width: 600px;
+  position: relative;
+  float: center;
+}
+.button {
+  font-size: 20pt;
+  font-family: cursive;
+  width: 150px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  left: 238px;
+  background-color: darkcyan;
+  border: 2px solid cyan;
+  border-radius: 800px;
+}
+.piece {
+    width: 30px;
+    margin: 5px;
+    height: 30px;
+    background-color: mediumseagreen;
+    border: 2px solid black;
+    border-radius: 5px;
+    position: relative;
+    padding: 8px;
+}
+
+.showing {
+  display: block;
+}
+.hiding {
+  display: none;
+}
+.body {
+  background-color: darkcyan;
+}
+.bomb {
+  width: 42px;
+  height: 42px;
+  position: relative;
+  right: 6px;
+  bottom: 6px;
+  margin-bottom: 8.7px;
+  z-index: -1;
+}
+.timer {
+ font-size: 17pt; 
+ font-family: cursive;
+ position: relative;
+ left: 247px;
+ border: 3px solid darkgreen;
+ border-radius: 18px;
+ width: 120px;
+ margin: 8px;
+}
+  </style>
+</head>
+
+<body class="body" ;>
+  <div id="body" ;>
+    <div class="timer" ; id="timer" ;>
+
+    </div>
+    <input id="start" ; type="button" ; value="Start!" ; class="button" ; onclick="gameLoop()" />
+    <div id="board">
+    </div>
+  </div>
+  <script>
+  function gameLoop() {
+  setTimeout(startingStuff, 0);
+  setTimeout(createBoard, 500);
+  setTimeout(gameTimer, 500);
+}
+function createBoard() {
+  document.getElementById("start").classList.add("hiding");
+  var board = document.getElementById("board");
+  for (var i = 0; i < 90; i++) {
+    var newDiv = document.createElement("div");
+    newDiv.id = ("newDiv");
+    document.getElementById("body").onclick = "hidePiece()";
+    newDiv.classList.add("piece");
+    var loopNum = i;
+    document.getElementById("board").appendChild(newDiv);
+    if (loopNum < 8) {
+    } else if (loopNum > 8 && loopNum < 18) {
+      newDiv.style.left = "60px";
+      newDiv.style.bottom = "495px";
+    } else if (loopNum > 16 && loopNum < 27) {
+      newDiv.style.left = "120px";
+      newDiv.style.bottom = "989.5px";
+    } else if (loopNum > 24 && loopNum < 36) {
+      newDiv.style.left = "180px";
+      newDiv.style.bottom = "1485px";
+    } else if (loopNum > 32 && loopNum < 45) {
+      newDiv.style.left = "240px";
+      newDiv.style.bottom = "1980px";
+    } else if (loopNum > 40 && loopNum < 54) {
+      newDiv.style.left = "300px";
+      newDiv.style.bottom = "2475px";
+    } else if (loopNum > 48 && loopNum < 63) {
+      newDiv.style.left = "360px";
+      newDiv.style.bottom = "2970px";
+    } else if (loopNum > 56 && loopNum < 72) {
+      newDiv.style.left = "420px";
+      newDiv.style.bottom = "3465px";
+    } else if (loopNum > 64 && loopNum < 81) {
+      newDiv.style.left = "480px";
+      newDiv.style.bottom = "3960px";
+    } else if (loopNum > 72 && loopNum < 90) {
+      newDiv.style.left = "540px";
+      newDiv.style.bottom = "4455px";
+    } else if (loopNum > 80 && loopNum < 81) {
+      newDiv.style.left = "600px";
+      newDiv.style.bottom = "4950px";
+    }
+    var type = newDiv.getAttribute("class");
+    if ((type = "bomb")) {
+      var img = document.createElement("img");
+      img.src =
+        "https://www.giantbomb.com/a/uploads/scale_small/8/87790/3216800-icon_mine.png";
+      img.classList.add("bomb");
+      img.id = "img";
+      board = document.getElementById("board");
+      newDiv = document.createElement("div");
+      loopNum = i;
+      newDiv.classList.add("piece");
+      newDiv.id = "newDiv";
+      if (loopNum < 8) {
+      } else if (loopNum > 8 && loopNum < 18) {
+        img.style.left = "54px";
+        img.style.top = "-501px";
+      } else if (loopNum > 16 && loopNum < 27) {
+        img.style.left = "114px";
+        img.style.top = "-995.5px";
+      } else if (loopNum > 24 && loopNum < 36) {
+        img.style.left = "174px";
+        img.style.top = "-1491px";
+      } else if (loopNum > 32 && loopNum < 45) {
+        img.style.left = "234px";
+        img.style.top = "-1986px";
+      } else if (loopNum > 40 && loopNum < 54) {
+        img.style.left = "294px";
+        img.style.top = "-2481px";
+      } else if (loopNum > 48 && loopNum < 63) {
+        img.style.left = "354px";
+        img.style.top = "-2976px";
+      } else if (loopNum > 56 && loopNum < 72) {
+        img.style.left = "414px";
+        img.style.top = "-3471px";
+      } else if (loopNum > 64 && loopNum < 81) {
+        img.style.left = "474px";
+        img.style.top = "-3968px";
+      } else if (loopNum > 72 && loopNum < 90) {
+        img.style.left = "534px";
+        img.style.top = "-4464px";
+      } else if (loopNum > 80 && loopNum < 81) {
+        img.style.left = "594px";
+        img.style.top = "-4960px";
+      }
+      document.getElementById("newDiv").appendChild(img);
+    }
+  }
+  var randomPiece = Math.floor(Math.random() * 10) + 1;
+}
+function gameTimer() {
+  document.getElementById("timer").classList.remove("hiding");
+  document.getElementById("timer").classList.add("showing");
+  time = time + 1;
+  document.getElementById("timer").innerHTML = "Timer: " + time;
+  setTimeout(gameTimer, 1000);
+}
+function startingStuff() {
+  time = 0;
+  document.getElementById("timer").classList.add("hiding");
+}
+  </script>
+</body>
+</html>
